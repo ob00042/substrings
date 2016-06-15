@@ -1,29 +1,22 @@
 def substrings(phrase)
 
-#word=""
-
-words={}
-
+words=Hash.new(0)
 
 dictionary = ["below","down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"]
 
-#phrase_in_words=phrase.split(" ")
+phrase.downcase.split(/[^\w]+/).each do |word|
+	
+	dictionary.each do |dict|
 
-dictionary.each do |word|
-
-		if phrase.downcase.scan(word)
-			if words.has_key?(word) 
-				words[word]+=1
-			else
-				words[word]=1
-			end
-		end
+		words[dict] += 1 if word[dict]
 
 	end
+
+end
 
 puts words
 
 end
 
-
 substrings("below")
+substrings("Howdy partner, sit down! How's it going?")
